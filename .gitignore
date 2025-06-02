@@ -1,13 +1,10 @@
-# HELP.md
 HELP.md
-
-# Maven build artifacts
-/target/
-!/target/*.jar  # Giữ lại file JAR trong thư mục target
-
+!target/*.jar
 .mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# STS (Spring Tool Suite)
+### STS ###
 .apt_generated
 .classpath
 .factorypath
@@ -16,41 +13,21 @@ HELP.md
 .springBeans
 .sts4-cache
 
-# IntelliJ IDEA
+### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 
-# NetBeans
+### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-/build/
+build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-# VS Code
+### VS Code ###
 .vscode/
-
-# Logs
-*.log
-/logs/
-
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._.DS_Store
-Icon?
-Thumbs.db
-ehthumbs.db
-Desktop.ini
