@@ -4,7 +4,13 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Bỏ qua dos2unix và trực tiếp chạy maven build
+# Cài đặt dos2unix để chuyển đổi encoding
+RUN apt-get update && apt-get install -y dos2unix
+
+# Chuyển đổi file application.properties để đảm bảo encoding đúng
+RUN dos2unix /app/src/main/resources/application.properties
+
+# Chạy Maven build
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create runtime image
