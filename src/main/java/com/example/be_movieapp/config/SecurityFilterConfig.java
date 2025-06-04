@@ -13,10 +13,8 @@ public class SecurityFilterConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/api/users/**").permitAll() // Cho phép trang chủ và tĩnh
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
-
         return http.build();
     }
 }
