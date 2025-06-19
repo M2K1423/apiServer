@@ -67,6 +67,7 @@ public class UserController {
             response.put("message", "Login success");
             response.put("userId", user.getId()); // ✅ Trả về userId
             response.put("username", user.getUsername());
+            response.put("email", user.getEmail());
         } else {
             response.put("success", false);
             response.put("error", "Invalid credentials");
