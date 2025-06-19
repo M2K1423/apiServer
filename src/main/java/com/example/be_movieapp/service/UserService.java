@@ -1,7 +1,12 @@
 package com.example.be_movieapp.service;
 
+import com.example.be_movieapp.BeMovieAppApplication;
+import com.example.be_movieapp.controller.UserController;
 import com.example.be_movieapp.model.User;
 import com.example.be_movieapp.repository.UserRepository;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,10 +46,11 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public boolean login(String username, String password) {
+    public User  login(String username, String password) {
         return userRepository.findByUsername(username)
-                .map(u -> passwordEncoder.matches(password, u.getPassword()))
-                .orElse(false);
+                .filter(u -> passwordEncoder.matches(password, u.getPassword()))
+                .orElse(null);
     }
+
 
 }

@@ -55,12 +55,14 @@ public class UserController {
         String username = loginData.get("username");
         String password = loginData.get("password");
 
-        boolean success = userService.login(username, password);
+        User user = userService.login(username, password); // trả về User nếu đúng
 
         Map<String, Object> response = new HashMap<>();
-        if (success) {
+        if (user != null) {
             response.put("success", true);
             response.put("message", "Login success");
+            response.put("userId", user.getId()); // ✅ Trả về userId
+            response.put("username", user.getUsername());
         } else {
             response.put("success", false);
             response.put("error", "Invalid credentials");
@@ -68,4 +70,5 @@ public class UserController {
 
         return ResponseEntity.ok(response);
     }
+
 }

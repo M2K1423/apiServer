@@ -2,6 +2,9 @@ package com.example.be_movieapp.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -12,6 +15,16 @@ public class User {
 
     private String username;
     private String password;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<WatchedMovie> watchedMovies = new ArrayList<>();
+
+//    public List<WatchedMovie> getWatchedMovies() {
+//        return watchedMovies;
+//    }
+//
+//    public void setWatchedMovies(List<WatchedMovie> watchedMovies) {
+//        this.watchedMovies = watchedMovies;
+//    }
 
     // ====== GETTERS ======
     public Long getId() {
