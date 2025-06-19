@@ -1,7 +1,11 @@
 com\example\be_movieapp\model\User.class
+com\example\be_movieapp\repository\WatchedMovieRepository.class
 com\example\be_movieapp\BeMovieAppApplication.class
 com\example\be_movieapp\config\SecurityFilterConfig.class
+com\example\be_movieapp\service\WatchedMoveService.class
 com\example\be_movieapp\controller\UserController.class
+com\example\be_movieapp\controller\WatchedMovieController.class
 com\example\be_movieapp\config\SecurityConfig.class
 com\example\be_movieapp\repository\UserRepository.class
+com\example\be_movieapp\model\WatchedMovie.class
 com\example\be_movieapp\service\UserService.class

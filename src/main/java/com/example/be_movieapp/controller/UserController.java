@@ -33,12 +33,16 @@ public class UserController {
             User newUser = new User();
             newUser.setUsername(registerData.get("username"));
             newUser.setPassword(registerData.get("password"));
+            newUser.setEmail(registerData.get("email"));
 
-            User savedUser = userService.register(newUser);
+            String otp = registerData.get("otp");
+
+            User savedUser = userService.register(newUser, otp);
 
             response.put("success", true);
             response.put("message", "Đăng ký thành công");
             response.put("user", savedUser.getUsername());
+            response.put("email", savedUser.getEmail());
 
             return ResponseEntity.ok(response);
 

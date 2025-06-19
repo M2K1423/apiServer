@@ -15,16 +15,7 @@ public class User {
 
     private String username;
     private String password;
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<WatchedMovie> watchedMovies = new ArrayList<>();
-
-//    public List<WatchedMovie> getWatchedMovies() {
-//        return watchedMovies;
-//    }
-//
-//    public void setWatchedMovies(List<WatchedMovie> watchedMovies) {
-//        this.watchedMovies = watchedMovies;
-//    }
+    private String email;
 
     // ====== GETTERS ======
     public Long getId() {
@@ -38,6 +29,7 @@ public class User {
     public String getPassword() {
         return password;
     }
+    public String getEmail() { return email; }
 
     // ====== SETTERS ======
     public void setId(Long id) {
@@ -51,4 +43,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public void setEmail(String email) { this.email = email; }
 }
