@@ -1,13 +1,15 @@
 package com.example.be_movieapp.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.Id; // Giữ nguyên @Id trên email
+import jakarta.persistence.Table; // Thêm lại nếu bạn muốn đặt tên bảng cụ thể
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "email_verifications") // Tùy chọn: đặt tên bảng rõ ràng
 public class EmailVerification {
 
-    @Id
+    @Id // Đánh dấu email là khóa chính
     private String email;
 
     private String otp;
@@ -45,5 +47,14 @@ public class EmailVerification {
 
     public void setExpiresAt(LocalDateTime expiresAt) {
         this.expiresAt = expiresAt;
+    }
+
+    @Override
+    public String toString() {
+        return "EmailVerification{" +
+                "email='" + email + '\'' +
+                ", otp='" + otp + '\'' +
+                ", expiresAt=" + expiresAt +
+                '}';
     }
 }

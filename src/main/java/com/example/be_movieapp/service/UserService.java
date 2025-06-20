@@ -17,8 +17,10 @@ public class UserService {
     @Autowired
     private EmailVerificationService emailVerificationService;
 
-    @Autowired
-    private EmailService emailService;
+    // Không cần inject EmailService trực tiếp vào UserService nữa
+    // vì EmailVerificationService đã gọi EmailService bên trong nó
+    // @Autowired
+    // private EmailService emailService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -28,13 +30,16 @@ public class UserService {
     }
 
     public void sendOtpToEmail(String email) {
+        // Kiểm tra xem email đã được sử dụng chưa (nếu đây là luồng đăng ký)
         if (userRepository.existsByEmail(email)) {
             throw new RuntimeException("Email đã được sử dụng");
         }
 
-        String otp = emailVerificationService.generateOtp(email);
-        emailService.sendOtpEmail(email, otp);
+        // GỌI PHƯƠNG THỨC 'sendOtp' TRONG EmailVerificationService
+        // Phương thức này sẽ TỰ ĐỘNG TẠO OTP, LƯU VÀO DB và GỬI EMAIL.
+        emailVerificationService.sendOtp(email);
     }
+
     public User register(User user, String otp) {
         if (userRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Tên đăng nhập đã tồn tại");
@@ -44,6 +49,7 @@ public class UserService {
             throw new RuntimeException("Email đã được sử dụng");
         }
 
+        // Xác minh OTP
         if (!emailVerificationService.verifyOtp(user.getEmail(), otp)) {
             throw new RuntimeException("OTP không hợp lệ hoặc đã hết hạn");
         }

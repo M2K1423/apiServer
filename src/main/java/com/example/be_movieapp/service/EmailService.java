@@ -14,7 +14,7 @@ public class EmailService {
     public void sendOtpEmail(String to, String otp) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
-        message.setSubject("🎬 Xác minh tài khoản MovieApp");
+        message.setSubject("🎬 Xác minh tài khoản MovieApp"); // Tiêu đề email
 
         String content = "Xin chào,\n\n"
                 + "Bạn vừa yêu cầu tạo tài khoản trên MovieApp.\n"
